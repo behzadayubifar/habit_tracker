@@ -33,7 +33,7 @@ class _AnimatedTaskState extends State<AnimatedTask>
 
   @override
   void dispose() {
-    _animationController.removeStatusListener((status) {});
+    // _animationController.removeStatusListener((status) {});
     _animationController.dispose();
     super.dispose();
   }
@@ -68,34 +68,37 @@ class _AnimatedTaskState extends State<AnimatedTask>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTapCancel: _handleTapCancel,
       onTapDown: _handleTapDown,
-      onTapUp: (_) => _handleTapCancel,
+      onTapCancel: _handleTapCancel,
+      onTapUp: (_) => _handleTapCancel(),
       child: AnimatedBuilder(
+        animation: _curveAnimation,
         builder: (context, child) {
           final themeData = AppTheme.of(context);
           final progress = _curveAnimation.value;
           final hasCompleted = progress == 1.0;
           final iconColor =
               hasCompleted ? themeData.accentNegative : themeData.taskIcon;
-          return Stack(
-            children: [
-              TaskCompletionRing(
-                progress: _curveAnimation.value,
-              ),
-              // Positioned.fill(child: Text("COMPLETED !!!")),
-              Positioned.fill(
-                child: CenteredSvgIcon(
-                  iconName: hasCompleted && _showCheckIcon
-                      ? AppAssets.check
-                      : widget.iconName,
-                  color: iconColor,
+          return SizedBox(
+            height: 160,
+            child: Stack(
+              children: [
+                TaskCompletionRing(
+                  progress: _curveAnimation.value,
                 ),
-              ),
-            ],
+                // Positioned.fill(child: Text("COMPLETED !!!")),
+                Positioned.fill(
+                  child: CenteredSvgIcon(
+                    iconName: hasCompleted && _showCheckIcon
+                        ? AppAssets.check
+                        : widget.iconName,
+                    color: iconColor,
+                  ),
+                ),
+              ],
+            ),
           );
         },
-        animation: _curveAnimation,
       ),
     );
   }

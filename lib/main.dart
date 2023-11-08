@@ -1,5 +1,4 @@
-import 'package:animtaions_ba/ui/task/animated_task.dart';
-import 'package:animtaions_ba/constants/app_assets.dart';
+import 'package:animtaions_ba/ui/home/home_page.dart';
 import 'package:animtaions_ba/constants/app_colors.dart';
 import 'package:animtaions_ba/theming/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -22,24 +21,8 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       home: AppTheme(
-          data: AppThemeData.defaultWithSwatch(AppColors.red), child: Home()),
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  const Home({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: SizedBox(
-          width: 240,
-          height: 240,
-          child: AnimatedTask(iconName: AppAssets.dog),
-        ),
-      ),
+          data: AppThemeData.defaultWithSwatch(AppColors.red),
+          child: HomePage()),
     );
   }
 }
