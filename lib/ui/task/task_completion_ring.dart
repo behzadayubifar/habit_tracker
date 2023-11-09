@@ -9,6 +9,7 @@ class TaskCompletionRing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: AspectRatio(
         aspectRatio: 1.0,
         child: CustomPaint(

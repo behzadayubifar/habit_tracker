@@ -14,9 +14,10 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          brightness: Brightness.dark,
-          scaffoldBackgroundColor: const Color.fromARGB(255, 177, 91, 0)),
+        brightness: Brightness.dark,
+      ),
       // darkTheme: ThemeData(brightness: Brightness.dark),
+
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
